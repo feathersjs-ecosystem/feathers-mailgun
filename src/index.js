@@ -15,44 +15,16 @@ export class Service {
     if (!options.domain) {
       throw new Error('Mailgun `domain` needs to be provided');
     }
+
     this.options = options;
     this.mailgun = new Mailgun({apiKey: options.apiKey, domain: options.domain});
     this._send = this.mailgun.messages().send;
   }
 
   create(data) {
-
-    if (!data.from) {
-      return Promise.reject(new errors.BadRequest('`from` must be specified'));
-    }
-
-    if (!data.to) {
-      return Promise.reject(new errors.BadRequest('`to` must be specified'));
-    }
-
-    if (!data.subject) {
-      return Promise.reject(new errors.BadRequest('`subject` must be specified'));
-    }
-
-    if (!data.html) {
-      return Promise.reject(new errors.BadRequest('`html` must be specified'));
-    }
-
-    // Convert array of emails to comma delimited if needed
-    var to = data.to;
-    if(typeof data.to !== 'string') {
-      to = data.to.join(',');
-    }
-
-    var mailgunData = {
-      from: data.from,
-      to: to,
-      subject: data.subject,
-      html: data.html
-    };
-
     return new Promise((resolve, reject) => {
-      this._send(mailgunData, function (err, body) {
+      this._validateParams(data);
+      this._send(this._formatData(data), function (err, body) {
         if (err) {
           return reject(err);
         } else {
@@ -60,6 +32,39 @@ export class Service {
         }
       });
     });
+  }
+
+  _validateParams(data) {
+    if (!data.from) {
+      throw new errors.BadRequest('`from` must be specified');
+    }
+
+    if (!data.to) {
+      throw new errors.BadRequest('`to` must be specified');
+    }
+
+    if (!data.subject) {
+      throw new errors.BadRequest('`subject` must be specified');
+    }
+
+    if (!data.html) {
+      throw new errors.BadRequest('`html` must be specified');
+    }
+  }
+
+  // Convert array of emails to comma delimited if needed
+  _formatData(data) {
+    var to = data.to;
+    if (typeof data.to === 'object') {
+      to = data.to.join(',');
+    }
+
+    return {
+      from: data.from,
+      to: to,
+      subject: data.subject,
+      html: data.html
+    };
   }
 }
 
