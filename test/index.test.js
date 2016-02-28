@@ -14,7 +14,7 @@ import server from './test-app';
 import service from '../src';
 
 
-const mailgun = service({apiKey: 'API_KEY', domain: 'mail.feathersjs.com'});
+const mailgun = service({apiKey: 'API_KEY', domain: 'DOMAIN'});
 const app = feathers().use('/mailer', mailgun);
 
 const validParams = {
@@ -31,19 +31,21 @@ const validParamsWithArrayInToField = {
   html: 'message html'
 };
 
+
+
 describe('Mailgun Service', function () {
 
   after(done => server.close(() => done()));
 
   describe('Initialization', () => {
 
-    describe('when missing api key', () => {
+    describe('without an api key', () => {
       it('throws an error', () => {
         expect(service.bind(null, {})).to.throw('Mailgun `apiKey` needs to be provided');
       });
     });
 
-    describe('when missing domain', () => {
+    describe('without a domain', () => {
       it('throws an error', () => {
         expect(service.bind(null, {apiKey: 'API_KEY'})).to.throw('Mailgun `domain` needs to be provided');
       });
@@ -52,7 +54,7 @@ describe('Mailgun Service', function () {
 
   describe('Validation', () => {
 
-    describe('when missing from field', () => {
+    describe('when missing `from` field', () => {
       it('throws an error', (done) => {
         app.service('mailer').create({}).then(done).catch(err => {
           assert.equal(err.code, 400);
@@ -62,7 +64,7 @@ describe('Mailgun Service', function () {
       });
     });
 
-    describe('when missing to field', () => {
+    describe('when missing `to` field', () => {
       it('throws an error', (done) => {
         app.service('mailer').create({from: 'from@from.com'}).then(done).catch(err => {
           assert.equal(err.code, 400);
@@ -72,7 +74,7 @@ describe('Mailgun Service', function () {
       });
     });
 
-    describe('when missing subject field', () => {
+    describe('when missing `subject` field', () => {
       it('throws an error', (done) => {
         app.service('mailer').create({from: 'from@from.com', to: 'to@to.com'}).then(done).catch(err => {
           assert.equal(err.code, 400);
@@ -82,7 +84,7 @@ describe('Mailgun Service', function () {
       });
     });
 
-    describe('when missing html field', () => {
+    describe('when missing `html` field', () => {
       it('throws an error', (done) => {
         app.service('mailer').create({
           from: 'from@from.com',
@@ -97,11 +99,10 @@ describe('Mailgun Service', function () {
     });
   });
 
-  var mailgunSend;
-
   describe('Sending messages', () => {
 
-    before(function (done) {
+    var mailgunSend;
+    beforeEach(function (done) {
       mailgunSend =
       sinon
         .stub(app.service('mailer'), '_send', function (data, callback) {
@@ -110,14 +111,14 @@ describe('Mailgun Service', function () {
       done();
     });
 
-    after(function (done) {
+    afterEach(function (done) {
       mailgunSend.restore();
       done();
     });
 
     describe('when sending to an array of email addresses', () => {
 
-      it('correctly parses into comma delimited string', (done) => {
+      it('correctly parses into a comma delimited string', (done) => {
 
         var expectedParams = {
           from: validParamsWithArrayInToField.from,
@@ -147,7 +148,6 @@ describe('Mailgun Service', function () {
 
   describe('Common functionality', () => {
     it('is CommonJS compatible', () => {
-      console.log(typeof require('../lib'));
       assert.ok(typeof require('../lib') === 'function');
     });
   });
