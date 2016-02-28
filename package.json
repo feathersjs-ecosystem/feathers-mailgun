@@ -1,7 +1,7 @@
 {
   "name": "feathers-mailgun",
   "description": "Feathers Mailgun Service",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/feathersjs/feathers-mailgun",
   "repository": {
     "type": "git",
