@@ -3,7 +3,7 @@ const rest = require('feathers-rest');
 const socketio = require('feathers-socketio');
 const bodyParser = require('body-parser');
 const errorHandler = require('feathers-errors/handler');
-const mailgunService = require('../lib').default;
+const mailgunService = require('../lib');
 
 // Create a feathers instance.
 var app = feathers()

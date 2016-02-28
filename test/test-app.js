@@ -1,5 +1,5 @@
 const feathers = require('feathers');
-const service = require('../lib').default;
+const service = require('../lib');
 
 // Create the mailgun service
 const mailgunService = service({
