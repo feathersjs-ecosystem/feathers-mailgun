@@ -60,12 +60,7 @@ class Service {
       to = data.to.join(',');
     }
 
-    return {
-      from: data.from,
-      to: to,
-      subject: data.subject,
-      html: data.html
-    };
+    return Object.assign(data, { to: to });
   }
 }
 

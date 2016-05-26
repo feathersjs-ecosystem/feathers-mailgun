@@ -27,7 +27,8 @@ app.service('mailer').create({
   //from: 'FROM_EMAIL',
   //to: 'TO_EMAIL',
   subject: 'Mailgun test',
-  html: 'Email body'
+  html: 'Email body',
+  // 'h: Reply-To': 'REPLY_TO_EMAIL'
 }).then(function (result) {
   console.log('Sent email', result);
 }).catch(err => {
