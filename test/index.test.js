@@ -21,14 +21,18 @@ const validParams = {
   from: 'from@from.com',
   to: 'to@to.com',
   subject: 'Email Subject',
-  html: 'message html'
+  html: 'message html',
+  'h:Reply-To': 'reply-here@from.com',
+  'random field': 'This will be ignored'
 };
 
 const validParamsWithArrayInToField = {
   from: 'from@from.com',
   to: ['to@to.com', 'to2@to.com'],
   subject: 'Email Subject',
-  html: 'message html'
+  html: 'message html',
+  'h:Reply-To': 'reply-here@from.com',
+  'random field': 'This will be ignored'
 };
 
 
@@ -124,7 +128,9 @@ describe('Mailgun Service', function () {
           from: validParamsWithArrayInToField.from,
           to: 'to@to.com,to2@to.com',
           subject: validParamsWithArrayInToField.subject,
-          html: validParamsWithArrayInToField.html
+          html: validParamsWithArrayInToField.html,
+          'h:Reply-To': validParamsWithArrayInToField['h:Reply-To'],
+          'random field': validParamsWithArrayInToField['random field'] // This will be ignored by mailgun-js
         };
         app.service('mailer').create(validParamsWithArrayInToField).then(result => {
           expect(result.success).to.eql(true);
