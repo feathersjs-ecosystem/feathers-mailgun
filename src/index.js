@@ -16,7 +16,10 @@ class Service {
 
     this.options = options;
     this.mailgun = new Mailgun({apiKey: options.apiKey, domain: options.domain});
-    this._send = this.mailgun.messages().send;
+  }
+
+  _send(data, callback) {
+    return this.mailgun.messages().send(data, callback);
   }
 
   create(data) {
