@@ -4,8 +4,7 @@ import errors from 'feathers-errors';
 import Mailgun from 'mailgun-js';
 
 class Service {
-  constructor(options = {}) {
-
+  constructor (options = {}) {
     if (!options.apiKey) {
       throw new Error('Mailgun `apiKey` needs to be provided');
     }
@@ -18,11 +17,11 @@ class Service {
     this.mailgun = new Mailgun({apiKey: options.apiKey, domain: options.domain});
   }
 
-  _send(data, callback) {
+  _send (data, callback) {
     return this.mailgun.messages().send(data, callback);
   }
 
-  create(data) {
+  create (data) {
     return new Promise((resolve, reject) => {
       this._validateParams(data);
       this._send(this._formatData(data), function (err, body) {
@@ -35,7 +34,7 @@ class Service {
     });
   }
 
-  _validateParams(data) {
+  _validateParams (data) {
     if (!data.from) {
       throw new errors.BadRequest('`from` must be specified');
     }
@@ -54,7 +53,7 @@ class Service {
   }
 
   // Convert array of emails to comma delimited if needed
-  _formatData(data) {
+  _formatData (data) {
     var to = data.to;
     if (typeof data.to === 'object') {
       to = data.to.join(',');
@@ -64,7 +63,7 @@ class Service {
   }
 }
 
-export default function init(options) {
+export default function init (options) {
   return new Service(options);
 }
 

@@ -1,7 +1,4 @@
-/*jshint expr: true*/
-
-import chai from 'chai';
-import { expect } from 'chai';
+import chai, { expect } from 'chai';
 import assert from 'assert';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -12,7 +9,6 @@ import feathers from 'feathers';
 
 import server from './test-app';
 import service from '../src';
-
 
 const mailgun = service({apiKey: 'API_KEY', domain: 'DOMAIN'});
 const app = feathers().use('/mailer', mailgun);
@@ -35,14 +31,10 @@ const validParamsWithArrayInToField = {
   'random field': 'This will be ignored'
 };
 
-
-
 describe('Mailgun Service', function () {
-
   after(done => server.close(() => done()));
 
   describe('Initialization', () => {
-
     describe('without an api key', () => {
       it('throws an error', () => {
         expect(service.bind(null, {})).to.throw('Mailgun `apiKey` needs to be provided');
@@ -57,7 +49,6 @@ describe('Mailgun Service', function () {
   });
 
   describe('Validation', () => {
-
     describe('when missing `from` field', () => {
       it('throws an error', (done) => {
         app.service('mailer').create({}).then(done).catch(err => {
@@ -104,7 +95,6 @@ describe('Mailgun Service', function () {
   });
 
   describe('Sending messages', () => {
-
     var mailgunSend;
     beforeEach(function (done) {
       mailgunSend =
@@ -121,9 +111,7 @@ describe('Mailgun Service', function () {
     });
 
     describe('when sending to an array of email addresses', () => {
-
       it('correctly parses into a comma delimited string', (done) => {
-
         var expectedParams = {
           from: validParamsWithArrayInToField.from,
           to: 'to@to.com,to2@to.com',
@@ -149,7 +137,6 @@ describe('Mailgun Service', function () {
         });
       });
     });
-
   });
 
   describe('Common functionality', () => {
@@ -157,5 +144,4 @@ describe('Mailgun Service', function () {
       assert.ok(typeof require('../lib') === 'function');
     });
   });
-
 });

@@ -11,7 +11,6 @@ const mailgunService = service({
 var app = feathers()
   .use('/mailer', mailgunService);
 
-
 // Start the server.
 const port = 3030;
 
