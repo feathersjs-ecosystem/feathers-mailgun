@@ -17,17 +17,17 @@ var app = feathers()
   .use(bodyParser.urlencoded({extended: true}));
 
 app.use('/mailer', mailgunService({
-    //apiKey: 'API_KEY',
-    //domain: 'DOMAIN' // ex. your.domain.com
-  }
+    // apiKey: 'API_KEY',
+    // domain: 'DOMAIN' // ex. your.domain.com
+}
 ));
 
 // Send an email!
 app.service('mailer').create({
-  //from: 'FROM_EMAIL',
-  //to: 'TO_EMAIL',
+  // from: 'FROM_EMAIL',
+  // to: 'TO_EMAIL',
   subject: 'Mailgun test',
-  html: 'Email body',
+  html: 'Email body'
   // 'h: Reply-To': 'REPLY_TO_EMAIL'
 }).then(function (result) {
   console.log('Sent email', result);
