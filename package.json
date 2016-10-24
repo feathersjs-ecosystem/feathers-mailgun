@@ -34,11 +34,11 @@
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
-    "compile": "rm -rf lib/ && babel -d lib/ src/",
+    "compile": "rimraf lib/ && babel -d lib/ src/",
     "watch": "babel --watch -d lib/ src/",
     "lint": "eslint-if-supported semistandard --fix",
     "mocha": "mocha test/ --compilers js:babel-core/register",
-    "test": "rm -rf db-data && npm run compile && npm run lint && npm run mocha && nsp check",
+    "test": "rimraf db-data && npm run compile && npm run lint && npm run mocha && nsp check",
     "start": "node example/app"
   },
   "semistandard": {
@@ -72,6 +72,7 @@
     "feathers-socketio": "^1.3.3",
     "mocha": "^2.2.5",
     "nsp": "^2.2.0",
+    "rimraf": "^2.5.4",
     "semistandard": "^9.1.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0"
