@@ -54,3 +54,4 @@ Session.vim
 .idea
 
 lib/
+coverage
