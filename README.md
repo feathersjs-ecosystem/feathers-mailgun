@@ -1,5 +1,7 @@
 # feathers-mailgun
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs/feathers-mailgun.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/feathersjs/feathers-mailgun.png?branch=master)](https://travis-ci.org/feathersjs/feathers-mailgun)
 [![Code Climate](https://codeclimate.com/github/feathersjs/feathers-mailgun.png)](https://codeclimate.com/github/feathersjs/feathers-mailgun)
 [![Test Coverage](https://codeclimate.com/github/feathersjs/feathers-mailgun/badges/coverage.svg)](https://codeclimate.com/github/feathersjs/feathers-mailgun/coverage)
