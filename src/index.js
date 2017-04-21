@@ -1,7 +1,7 @@
-if (!global._babelPolyfill) { require('babel-polyfill'); }
-
 import errors from 'feathers-errors';
 import Mailgun from 'mailgun-js';
+
+if (!global._babelPolyfill) { require('babel-polyfill'); }
 
 class Service {
   constructor (options = {}) {

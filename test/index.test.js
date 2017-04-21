@@ -2,13 +2,12 @@ import chai, { expect } from 'chai';
 import assert from 'assert';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-
-chai.use(sinonChai);
-
 import feathers from 'feathers';
 
 import server from './test-app';
 import service from '../src';
+
+chai.use(sinonChai);
 
 const mailgun = service({apiKey: 'API_KEY', domain: 'DOMAIN'});
 const app = feathers().use('/mailer', mailgun);
