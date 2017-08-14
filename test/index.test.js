@@ -98,7 +98,7 @@ describe('Mailgun Service', function () {
     beforeEach(function (done) {
       mailgunSend =
       sinon
-        .stub(app.service('mailer'), '_send', function (data, callback) {
+        .stub(app.service('mailer'), '_send').callsFake(function (data, callback) {
           callback(null, {success: true});
         });
       done();
