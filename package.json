@@ -75,7 +75,7 @@
     "nsp": "^2.2.0",
     "rimraf": "^2.5.4",
     "semistandard": "^11.0.0",
-    "sinon": "^4.0.0",
+    "sinon": "^4.0.1",
     "sinon-chai": "^2.8.0"
   }
 }
