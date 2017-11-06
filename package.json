@@ -38,7 +38,7 @@
     "watch": "babel --watch -d lib/ src/",
     "lint": "eslint-if-supported semistandard --fix",
     "mocha": "mocha --opts mocha.opts",
-    "test": "rimraf db-data && npm run compile && npm run lint && npm run coverage && nsp check",
+    "test": "rimraf db-data && npm run compile && npm run lint && npm run coverage",
     "start": "node example/app",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --opts mocha.opts"
   },
@@ -72,7 +72,6 @@
     "feathers-socketio": "^2.0.0",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^4.0.0",
-    "nsp": "^2.2.0",
     "rimraf": "^2.5.4",
     "semistandard": "^11.0.0",
     "sinon": "^4.0.0",
