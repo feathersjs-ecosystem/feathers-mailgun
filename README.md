@@ -1,8 +1,5 @@
 # feathers-mailgun
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs/feathers-mailgun.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/feathersjs/feathers-mailgun.png?branch=master)](https://travis-ci.org/feathersjs/feathers-mailgun)
-
 > A [Mailgun](https://www.mailgun.com) Service for [FeatherJS](https://github.com/feathersjs).
 
 ## Unmaintained
