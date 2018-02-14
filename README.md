@@ -1,13 +1,11 @@
 # feathers-mailgun
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs/feathers-mailgun.svg)](https://greenkeeper.io/)
-
 [![Build Status](https://travis-ci.org/feathersjs/feathers-mailgun.png?branch=master)](https://travis-ci.org/feathersjs/feathers-mailgun)
-[![Code Climate](https://codeclimate.com/github/feathersjs/feathers-mailgun.png)](https://codeclimate.com/github/feathersjs/feathers-mailgun)
-[![Test Coverage](https://codeclimate.com/github/feathersjs/feathers-mailgun/badges/coverage.svg)](https://codeclimate.com/github/feathersjs/feathers-mailgun/coverage)
-[![Dependency Status](https://img.shields.io/david/feathersjs/feathers-mailgun.svg?style=flat-square)](https://david-dm.org/feathersjs/feathers-mailgun)
-[![Download Status](https://img.shields.io/npm/dm/feathers-mailgun.svg?style=flat-square)](https://www.npmjs.com/package/feathers-mailgun)
-[![Slack Status](http://slack.feathersjs.com/badge.svg)](http://slack.feathersjs.com)
+
+## Unmaintained
+
+> This module is no longer maintained. Use [feathers-mailer](https://github.com/feathersjs-ecosystem/feathers-mailer) with the [nodemailer-mailgun-transport](https://github.com/orliesaurus/nodemailer-mailgun-transport) instead.
 
 > A [Mailgun](https://www.mailgun.com) Service for [FeatherJS](https://github.com/feathersjs).
 
