@@ -3,16 +3,11 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs/feathers-mailgun.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/feathersjs/feathers-mailgun.png?branch=master)](https://travis-ci.org/feathersjs/feathers-mailgun)
 
+> A [Mailgun](https://www.mailgun.com) Service for [FeatherJS](https://github.com/feathersjs).
+
 ## Unmaintained
 
 > This module is no longer maintained. Use [feathers-mailer](https://github.com/feathersjs-ecosystem/feathers-mailer) with the [nodemailer-mailgun-transport](https://github.com/orliesaurus/nodemailer-mailgun-transport) instead.
-
-> A [Mailgun](https://www.mailgun.com) Service for [FeatherJS](https://github.com/feathersjs).
-
-## TODO
-- [ ] Better example 
-- [ ] Lock down so mailer service is not exposed externally, maybe even by default for security reasons
- 
 
 ## Installation
 
